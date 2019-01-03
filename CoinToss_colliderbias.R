@@ -21,11 +21,12 @@
 ##################################################
 
 #load package
-install.packages("gmodels")
-library(gmodels)
+if(!require(here)) { install.packages("here"); require(here)}
+set_here()
+if(!require(gmodels)){ install.packages("gmodels");require(gmodels)}
 
 #Read in full dataset
-all_tosses<- read.csv("CoinToss.csv", stringsAsFactors = FALSE)
+all_tosses<- read.csv(here("CoinToss.csv"), stringsAsFactors = FALSE)
 
 #Create counter for number of heads
 all_tosses$heads_count<-all_tosses$Coin1_h + all_tosses$Coin2_h
